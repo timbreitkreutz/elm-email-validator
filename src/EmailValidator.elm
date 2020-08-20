@@ -4,8 +4,7 @@ module EmailValidator exposing (..)
 allowedLabelChar : Char -> Bool
 allowedLabelChar char =
     Char.isAlphaNum char
-        || char
-        == '-'
+        || (char == '-')
 
 
 labelValid : String -> Bool
@@ -67,9 +66,7 @@ emailValid email =
                     Nothing
     in
     not (String.isEmpty email)
-        && String.length email
-        < 256
-        && List.length emailParts
-        == 2
+        && (String.length email < 256)
+        && (List.length emailParts == 2)
         && localValid localPart
         && domainValid domainPart
